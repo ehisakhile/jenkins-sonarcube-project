@@ -35,7 +35,7 @@ pipeline {
                 script {
                     docker.withRegistry('', 'docker-hub-login') {
                         def buildNumber = env.BUILD_NUMBER ?: '1'
-                        def image = docker.build("ehisakhile/jenkins-sonarcube-project:1.0.0")
+                        def image = docker.build("ehisakhile/jenkins-sonarcube-project:latest")
                         image.push()
                     }
                 }
