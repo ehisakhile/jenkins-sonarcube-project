@@ -16,7 +16,7 @@ pipeline {
         
         stage('Code-Analysis') {
             steps {
-                withSonarQubeEnv('SonarCloud') {
+                withSonarQubeEnv('sonar-token') {
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.organization=ehino \
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 script {
                         sh 'docker rm -f $(docker ps -q) || true'
-                        sh 'docker run -d -p 3000:3000 ehisakhile/jenkins-sonarcube-project'
+                        sh 'docker run -d -p 3000:3000 ehisakhile/jenkins-sonarcube-project:latest'
                         
                     
                 }
