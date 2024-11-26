@@ -16,7 +16,7 @@ pipeline {
         
         stage('Code-Analysis') {
             steps {
-                withSonarQubeEnv('sonar-token') {
+                withSonarQubeEnv('SONAR_SERVER') {
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.organization=ehino \
